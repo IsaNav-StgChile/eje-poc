@@ -21,7 +21,7 @@ class PhotosController < ApplicationController
 
   # POST /photos or /photos.json
   def create
-    @photo = Photo.new(photo_params)
+    @photo = Photo.new(photo_params.merge(user: current_user))
 
     respond_to do |format|
       if @photo.save
@@ -65,6 +65,6 @@ class PhotosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def photo_params
-      params.require(:photo).permit(:url, :comment, :active, :user_id)
+      params.require(:photo).permit(:url, :comment, :active)
     end
 end

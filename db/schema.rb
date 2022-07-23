@@ -16,9 +16,9 @@ ActiveRecord::Schema.define(version: 2022_07_20_005443) do
   enable_extension "plpgsql"
 
   create_table "photos", force: :cascade do |t|
-    t.string "url"
+    t.string "url", null: false
     t.text "comment"
-    t.boolean "active"
+    t.boolean "active", default: true
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 2022_07_20_005443) do
     t.string "first_name", null: false
     t.string "last_name", null: false
     t.string "rut", null: false
-    t.boolean "active", default: false
+    t.boolean "active", default: true
     t.integer "role", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
